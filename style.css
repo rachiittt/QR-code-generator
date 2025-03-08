@@ -26,14 +26,14 @@ header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: relative;
 }
-/* before is used to add  insert content before the actual content of the <header> */
+
 header::before { 
     content: "Gencode";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 140px;  /* Default Size */
+    font-size: 140px;
     font-weight: 900;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.05);
@@ -41,7 +41,6 @@ header::before {
     user-select: none;
     white-space: nowrap;
 }
-
 
 header .company {
     font-size: 40px;
@@ -77,10 +76,12 @@ header .company {
     align-items: center;
     min-height: 60vh;
     width: 100%;
+    padding: 0 20px;
 }
 
 .QR-box {
-    width: 420px;
+    width: 100%;
+    max-width: 420px;
     padding: 30px;
     text-align: center;
     background: rgba(255, 255, 255, 0.6);
@@ -92,6 +93,11 @@ header .company {
 .QR-box:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.QR-box p {
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .QR-box input {
@@ -107,14 +113,12 @@ header .company {
     outline: none;
 }
 
-/* Focus Effect: Change border color and add glow */
 .QR-box input:focus {
     border-color: #0077ff;
     box-shadow: 0 0 10px rgba(0, 119, 255, 0.5);
     background: rgba(255, 255, 255, 0.6);
 }
 
-/* Placeholder Animation */
 .QR-box input::placeholder {
     color: rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, font-size 0.3s ease;
@@ -126,13 +130,17 @@ header .company {
     opacity: 0.7;
 }
 
-
 .QR-box #qrImg {
     margin-top: 20px;
     padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
-
+.QR-box #qrImg img {
+    max-width: 100%;
+    height: auto;
+}
 
 .QR-box .tap {
     width: 100%;
@@ -155,7 +163,6 @@ header .company {
     transform: scale(1.05);
 }
 
-
 .error {
     animation: shake 0.2s ease-in-out 5;
     border-color: #ff0000 !important;
@@ -168,26 +175,62 @@ header .company {
     75% { transform: translateX(-5px); }
 }
 
-/* 🔹 Responsive Adjustments */
-
-/* For Mobile (up to 480px) */
-@media (max-width: 480px) {
-    header::before { 
-        font-size: 50px; /* Shrinks text */
-        top: 55%;  /* Adjusts vertical centering */
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    header {
+        padding-left: 20px;
+        height: 70px;
+    }
+    
+    header::before {
+        font-size: 80px;
+    }
+    
+    header .company {
+        font-size: 30px;
+    }
+    
+    .head .title {
+        font-size: 35px;
+    }
+    
+    .QR-box {
+        padding: 20px;
     }
 }
 
-/* For Tablets (481px - 768px) */
-@media (max-width: 768px) {
-    header::before { 
-        font-size: 80px; /* Moderate size */
+@media screen and (max-width: 480px) {
+    header::before {
+        font-size: 60px;
+    }
+    
+    header .company {
+        font-size: 26px;
+    }
+    
+    .head .title {
+        font-size: 28px;
+    }
+    
+    .QR {
+        min-height: 40vh;
+    }
+    
+    .QR-box {
+        padding: 15px;
+    }
+    
+    .QR-box .tap {
+        font-size: 16px;
+        height: 40px;
     }
 }
 
-/* For Laptops (769px - 1024px) */
-@media (max-width: 1024px) {
-    header::before { 
-        font-size: 100px; /* Slightly smaller */
-    }
+/* Make sure the QR image shows properly */
+.showimg {
+    display: block !important;
+}
+
+#qrImg {
+    display: none;
 }
